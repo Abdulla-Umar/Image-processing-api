@@ -33,10 +33,10 @@ const isExist = async (req: Request, res: Response) => {
 
   console.log('check step');
   if (fs.existsSync(`./${filename}${width}x${height}.jpg`)) {
-    console.log('done lol mawgod');
+    console.log('Image exists');
     await readImage(req, res);
   } else {
-    console.log('la2 msh hena');
+    console.log('Image does not exist');
     await processImage(filename, width, height);
     await console.log('reesized');
     await readImage(req, res);
