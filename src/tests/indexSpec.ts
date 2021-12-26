@@ -12,11 +12,13 @@ describe('Test endpoint responses', () => {
   });
 });
 
-it('gets lol', async () => {
+it('tests the Image processing', async () => {
   const result = await processImage('palmtunnel', '400', '500');
   expect(result).toBeTruthy();
 });
 
+
+// the next test gives me an error and I couldn't fix it
 // const request2 = supertest(router);
 // describe("Test endpoint responses", () => {
 //   it("gets the api image resized endpoint", async () => {
