@@ -3,16 +3,15 @@ import { router } from "./routes/imageRouter.js";
 import { Request, Response } from "express";
 
 const app = express();
-const port = 6000;
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("hello");
+  res.send("Hello");
 });
 
 app.use("/api", router);
 
-app.listen(port, (): void => {
-  console.log(`server running on port: ${port}`);
+app.listen(3000, (): void => {
+  console.log(`server running on port: 3000`);
 });
 
 export default app;
