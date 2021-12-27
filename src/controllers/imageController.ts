@@ -7,11 +7,19 @@ interface Query {
   width: string;
   height: string;
 }
+interface ImageObject {
+  width: number,
+  height: number,
+  format: string,
+  channels: number,
+  premultiplied: boolean,
+  size: number
+}
 const processImage = async (
   filename: string,
   width: string,
   height: string
-) => {
+):Promise<ImageObject> => {
   const Image = await sharp(`./full/${filename}.jpg`)
     .resize(parseInt(width), parseInt(height))
     .toFile(`${filename}${width}x${height}.jpg`);
@@ -19,7 +27,7 @@ const processImage = async (
   return Image;
 };
 
-const readImage = async (req: Request, res: Response) => {
+const readImage = async (req: Request, res: Response):Promise<void>=> {
   const { filename, width, height } = req.query as unknown as Query;
   await fs.readFile(`${filename}${width}x${height}.jpg`, function (err, data) {
     if (err) throw err; // Fail if the file can't be read.
@@ -28,7 +36,7 @@ const readImage = async (req: Request, res: Response) => {
   });
 };
 
-const isExist = async (req: Request, res: Response) => {
+const isExist = async (req: Request, res: Response):Promise<void>=> {
   const { filename, width, height } = req.query as unknown as Query;
   if (fs.existsSync(`./${filename}${width}x${height}.jpg`)) {
     await readImage(req, res);
