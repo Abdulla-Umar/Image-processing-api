@@ -33,7 +33,6 @@ const isExist = async (req: Request, res: Response) => {
   if (fs.existsSync(`./${filename}${width}x${height}.jpg`)) {
     await readImage(req, res);
   } else {
-    console.log('Image does not exist');
     await processImage(filename, width, height);
     await readImage(req, res);
   }
