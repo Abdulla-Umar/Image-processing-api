@@ -14,17 +14,17 @@ describe('Test endpoint responses', () => {
 
 it('tests the Image processing', async () => {
   const result = await processImage('palmtunnel', '400', '500');
-  expect(result).toBeTruthy();
+  expect(result).toBeTruthy()
 });
 
 
 // the next test gives me an error and I couldn't fix it
-// const request2 = supertest(router);
-// describe("Test endpoint responses", () => {
-//   it("gets the api image resized endpoint", async () => {
-//     const response = await request2.get(
-//       "/api/images?filename=palmtunnel&width=400&height=440"
-//     );
-//     expect(response.status).toBe(200);
-//   });
-// });
+const request2 = supertest(router);
+describe("Test endpoint responses", () => {
+  it("gets the api image resized endpoint", async () => {
+    const response = await request2.get(
+      "/api/images?filename=palmtunnel&width=400&height=440"
+    );
+    expect(response.status).toBe(200);
+  });
+});
