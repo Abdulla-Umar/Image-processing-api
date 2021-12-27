@@ -30,6 +30,7 @@
     "jasmine": "3.10.0",
     "jasmine-spec-reporter": "7.0.0",
     "supertest": "6.1.6"
+
   },
   "keywords": []
 }
