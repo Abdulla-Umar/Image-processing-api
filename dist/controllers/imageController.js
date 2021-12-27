@@ -84,7 +84,7 @@ var readImage = function (req, res) { return __awaiter(void 0, void 0, void 0, f
                 return [4 /*yield*/, fs.readFile("".concat(filename).concat(width, "x").concat(height, ".jpg"), function (err, data) {
                         if (err)
                             throw err; // Fail if the file can't be read.
-                        res.writeHead(200, { "Content-Type": "image/jpg" });
+                        res.writeHead(200, { 'Content-Type': 'image/jpg' });
                         res.end(data); // Send the file data to the browser.
                     })];
             case 1:
@@ -99,27 +99,19 @@ var isExist = function (req, res) { return __awaiter(void 0, void 0, void 0, fun
         switch (_b.label) {
             case 0:
                 _a = req.query, filename = _a.filename, width = _a.width, height = _a.height;
-                console.log("check step");
                 if (!fs.existsSync("./".concat(filename).concat(width, "x").concat(height, ".jpg"))) return [3 /*break*/, 2];
-                console.log("done lol mawgod");
                 return [4 /*yield*/, readImage(req, res)];
             case 1:
                 _b.sent();
-                return [3 /*break*/, 6];
-            case 2:
-                console.log("la2 msh hena");
-                return [4 /*yield*/, processImage(filename, width, height)];
+                return [3 /*break*/, 5];
+            case 2: return [4 /*yield*/, processImage(filename, width, height)];
             case 3:
                 _b.sent();
-                return [4 /*yield*/, console.log("reesized")];
+                return [4 /*yield*/, readImage(req, res)];
             case 4:
                 _b.sent();
-                return [4 /*yield*/, readImage(req, res)];
-            case 5:
-                _b.sent();
-                console.log(res.statusCode);
-                _b.label = 6;
-            case 6: return [2 /*return*/];
+                _b.label = 5;
+            case 5: return [2 /*return*/];
         }
     });
 }); };
