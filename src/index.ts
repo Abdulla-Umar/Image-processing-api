@@ -4,8 +4,8 @@ import { Request, Response } from "express";
 
 const app = express();
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello");
+app.get("/", (req: Request, res: Response): void => {
+  res.send("hello");
 });
 
 app.use("/api", router);
