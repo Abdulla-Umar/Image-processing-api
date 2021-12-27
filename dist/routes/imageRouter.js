@@ -8,4 +8,4 @@ var express_1 = __importDefault(require("express"));
 var imageController_js_1 = require("../controllers/imageController.js");
 var router = express_1.default.Router();
 exports.router = router;
-router.get("/images", imageController_js_1.isExist);
+router.get('/images', imageController_js_1.isExist);
