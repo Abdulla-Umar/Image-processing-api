@@ -42,13 +42,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var supertest_1 = __importDefault(require("supertest"));
 var index_1 = __importDefault(require("../index"));
 var imageController_1 = require("../controllers/imageController");
+var imageRouter_1 = require("../routes/imageRouter");
 var request = (0, supertest_1.default)(index_1.default);
-describe("Test endpoint responses", function () {
-    it("gets the api endpoint", function (done) { return __awaiter(void 0, void 0, void 0, function () {
+describe('Test endpoint responses', function () {
+    it('gets the api endpoint', function (done) { return __awaiter(void 0, void 0, void 0, function () {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get("/")];
+                case 0: return [4 /*yield*/, request.get('/')];
                 case 1:
                     response = _a.sent();
                     expect(response.status).toBe(200);
@@ -58,11 +59,11 @@ describe("Test endpoint responses", function () {
         });
     }); });
 });
-it("gets lol", function () { return __awaiter(void 0, void 0, void 0, function () {
+it('tests the Image processing', function () { return __awaiter(void 0, void 0, void 0, function () {
     var result;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, (0, imageController_1.processImage)("palmtunnel", "400", "500")];
+            case 0: return [4 /*yield*/, (0, imageController_1.processImage)('palmtunnel', '400', '500')];
             case 1:
                 result = _a.sent();
                 expect(result).toBeTruthy();
@@ -70,12 +71,19 @@ it("gets lol", function () { return __awaiter(void 0, void 0, void 0, function (
         }
     });
 }); });
-// const request2 = supertest(router);
-// describe("Test endpoint responses", () => {
-//   it("gets the api image resized endpoint", async () => {
-//     const response = await request2.get(
-//       "/api/images?filename=palmtunnel&width=400&height=440"
-//     );
-//     expect(response.status).toBe(200);
-//   });
-// });
+// the next test gives me an error and I couldn't fix it
+var request2 = (0, supertest_1.default)(imageRouter_1.router);
+describe("Test endpoint responses", function () {
+    it("gets the api image resized endpoint", function () { return __awaiter(void 0, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, request2.get("/api/images?filename=palmtunnel&width=400&height=440")];
+                case 1:
+                    response = _a.sent();
+                    expect(response.status).toBe(200);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+});
