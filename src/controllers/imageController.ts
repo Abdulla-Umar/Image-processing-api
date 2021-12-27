@@ -30,17 +30,12 @@ const readImage = async (req: Request, res: Response) => {
 
 const isExist = async (req: Request, res: Response) => {
   const { filename, width, height } = req.query as unknown as Query;
-
-  console.log('check step');
   if (fs.existsSync(`./${filename}${width}x${height}.jpg`)) {
-    console.log('Image exists');
     await readImage(req, res);
   } else {
     console.log('Image does not exist');
     await processImage(filename, width, height);
-    await console.log('reesized');
     await readImage(req, res);
-    console.log(res.statusCode);
   }
 };
 
